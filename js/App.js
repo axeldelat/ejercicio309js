@@ -1,9 +1,16 @@
+let kodersArray = []
+
 class Koder {
     constructor( number, name, lastName, generation) {
         this.number = number;
         this.name = name;
         this.lastName = lastName;
         this.generation = generation;
+
+        this.pushToTheList = function() {
+            kodersArray.push(this);
+        }
+        this.pushToTheList();
     }
 }
 
@@ -15,6 +22,8 @@ class UI {
         let idNumberText = document.createTextNode(number)
         idNumberTd.appendChild(idNumberText)
         listTr.appendChild(idNumberTd)
+
+
         let nameTd = document.createElement('td')
         let nameText = document.createTextNode(name)
         nameTd.appendChild(nameText)
@@ -62,8 +71,7 @@ let number = 1
 
 // DOM Events
 document.getElementById("save-button").addEventListener("click", () =>{
-    const name = document.getElementById('item-name').
-    value
+    const name = document.getElementById('item-name').value
     const lastName = document.getElementById('item-lastName').value
     const generation = document.getElementById('item-category').value
 
