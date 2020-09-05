@@ -84,5 +84,28 @@ document.getElementById("save-button").addEventListener("click", () =>{
 
 document.getElementById('tbodyKoders').addEventListener('click', function(e) {
     const ui = new UI
-    ui.deleteKoder(e.target)    
+    ui.deleteKoder(e.target)
 })
+
+
+// ToggleContent Function
+
+function ToggleContent() {
+    let radioValueQuery = document.getElementById('radio-query').checked
+    let divQuery = document.getElementById('search-by-query');
+
+    let radioValueGeneration = document.getElementById('radio-generation').value
+    let divGen = document.getElementById('search-by-generation');
+
+    switch (radioValueQuery) {
+        case true:
+            divQuery.style.display = "block"
+            divGen.style.display = "none"
+            break
+        case false:
+            divQuery.style.display = "none"
+            divGen.style.display = "block"
+        default:
+            break;
+    }
+}
