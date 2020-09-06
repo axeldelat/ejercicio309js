@@ -18,6 +18,7 @@ class UI {
     addKoder(koder) {
         let {number, name, lastName, generation} = koder
         let listTr = document.createElement('tr')
+        
         let idNumberTd = document.createElement('td')
         let idNumberText = document.createTextNode(number)
         idNumberTd.appendChild(idNumberText)
