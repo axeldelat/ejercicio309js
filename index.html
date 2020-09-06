@@ -8,54 +8,52 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body></body>
-
-<div class="row mt-5">
-    <div class="col-md-4 offset-md-1">
-        <form action="" class="bg-dark text-white border rounded p-3" id="koder-form">
-            <div class="form-group">
-                <label for="item-name">Nombre</label>
-                <input type="text" class="form-control" id="item-name" placeholder="Ingrese el nombre">
-            </div>
-            <div class="form-group">
-                <label for="item-lastName">Apellidos</label>
-                <input type="text" class="form-control" id="item-lastName" placeholder="Ingrese los apellidos">
-            </div>
-            <div class="form-group">
-                <label for="item-category">Elija la Generación</label>
-                <select class="form-control" id="item-category">
-                    <option>1ra. Generación</option>
-                    <option>2da. Generación</option>
-                    <option>3ra. Generación</option>
-                    <option>4ta. Generación</option>
-                    <option>5ta. Generación</option>
-                    <option>6ta. Generación</option>
-                    <option>7ma. Generación</option>
-                    <option>8va. Generación</option>
-                    <option>9na. Generación</option>
-                </select>
-            </div>
-            <button id="save-button" type="button" class="btn btn-primary" >Submit</button>
-        </form>
-    </div>
-
-    <div class="col-md-5 offset-md-1">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Generación</th>
-                </tr>
-            </thead>
-            <tbody id="tbodyKoders">
-            </tbody>
-        </table>
+<body>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <form action="" class="bg-dark text-white border rounded p-3" id="koder-form">
+                <div class="form-group">
+                    <label for="item-name">Nombre</label>
+                    <input type="text" class="form-control" id="item-name" placeholder="Ingrese el nombre">
+                </div>
+                <div class="form-group">
+                    <label for="item-lastName">Apellidos</label>
+                    <input type="text" class="form-control" id="item-lastName" placeholder="Ingrese los apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="item-category">Elija la Generación</label>
+                    <select class="form-control" id="item-category">
+                        <option>1ra. Generación</option>
+                        <option>2da. Generación</option>
+                        <option>3ra. Generación</option>
+                        <option>4ta. Generación</option>
+                        <option>5ta. Generación</option>
+                        <option>6ta. Generación</option>
+                        <option>7ma. Generación</option>
+                        <option>8va. Generación</option>
+                        <option>9na. Generación</option>
+                    </select>
+                </div>
+                <button id="save-button" type="button" class="btn btn-primary btn-block" >Registrar</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Generación</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyKoders">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
-
 <div class="container mt-5">
     <div class="row">
             <div class="query-filter col-md-6">
@@ -75,7 +73,7 @@
                                 <input type="radio" name="buscar" value="generation-filter" id="radio-generation" onchange="ToggleContent()">
                             </div>
                         </div>
-                        <span class="input-group-text rounded-right">Buscar por Generacion</span>
+                        <span class="input-group-text rounded-right">Buscar por Generación</span>
                     </div>
                 </form>
     </div>
@@ -85,24 +83,31 @@
         <div>
             <div class="row" id="search-by-query">
                 <div class="col-md-12">
-                    <form class="form-inline">
-                        <input type="text" class="form-control mb-2 mr-2 w-75" id="inlineFormInputName2" placeholder="Introduce Nombre">
-                        <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                    <form class="form-inline col-12">
+                            <input type="text" class="form-control mb-2 mr-2 col-10" id="inlineFormInputName2" placeholder="Introduce Nombre">
+                            <button type="button" class="btn btn-primary mb-2 col">Buscar</button>
                     </form>
                 </div>
-                <div class="col-md-12">
-                    <div class="list-group-item d-flex justify-content-left rounded mb-2 border-0 text-secondary">
-                        <h4>Resultados</h4>
-                    </div>
-                        <ul class="list-group border border-dark" id="byName">
-                            <li class="list-group-item"></li>
-                        </ul>
+                <div class="col-md-12 mt-4 resultados">
+                    <h4 class="text-black-50">Resultados</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Generación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyKodersQuery">
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="row" id="search-by-generation">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label for="item-category">Elija la Generación</label>
+                        <label for="item-category">Elije una Generación</label>
                         <select class="form-control" id="item-category">
                             <option>1ra. Generación</option>
                             <option>2da. Generación</option>
@@ -115,27 +120,21 @@
                             <option>9na. Generación</option>
                         </select>
                     </div>
-                    <div class="list-group-item d-flex justify-content-left rounded mb-2 border-0 text-secondary">
-                        <h4>Resultados</h4>
+                    <div class="col-md-12 mt-4 resultados">
+                        <h4 class="text-black-50">Resultados</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Last Name</th>
+                                    <th scope="col">Generación</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyKodersQuery">
+                            </tbody>
+                        </table>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Apellido</th>
-                                <th scope="col">Generation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
