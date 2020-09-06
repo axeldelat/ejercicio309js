@@ -1,5 +1,7 @@
 //¿Como actualizar el número de id después de eliminar?
 //Que no permita agregar koder si no están completamente llenos los campos
+//Mostrar mensaje de no hay resultados cuando no hay resultados
+//Función Única de printKoders
 
 let kodersArray = [
 
@@ -77,6 +79,8 @@ function printKoders() {
     });
 }
 
+
+
 function resetForm() {
     document.getElementById('koder-form').reset()
 }
@@ -106,16 +110,54 @@ function ToggleContent() {
     }
 }
 
+//filter Koders by Generation
+document.getElementById('item-category-select').addEventListener( 'change' , (event) => {
+    let filteredKodersArray = kodersArray.filter( koder => koder.generation === event.target.value)
+    console.log(filteredKodersArray)
+    let divResults = document.getElementById('results-search-by-generation')
+    divResults.style.display = "block"
+    document.getElementById('tbodyKodersGeneration').innerHTML=""
+
+
+    filteredKodersArray.forEach(koder => {
+        let { number, name, lastName, generation } = koder
+
+        let listTr = document.createElement('tr')
+        let idNumberTd = document.createElement('td')
+        let idNumberText = document.createTextNode(number)
+        idNumberTd.appendChild(idNumberText)
+        listTr.appendChild(idNumberTd)
+
+        let nameTd = document.createElement('td')
+        let nameText = document.createTextNode(name)
+        nameTd.appendChild(nameText)
+        listTr.appendChild(nameTd)
+
+        let lastNameTd = document.createElement('td')
+        let lastNameText = document.createTextNode(lastName)
+        lastNameTd.appendChild(lastNameText)
+        listTr.appendChild(lastNameTd)
+
+        let generationTd = document.createElement('td')
+        let generationText = document.createTextNode(generation)
+        generationTd.appendChild(generationText)
+        listTr.appendChild(generationTd)
+
+        document.getElementById('tbodyKodersGeneration').appendChild(listTr)
+    });
+
+    return console.log(filteredKodersArray)
+})
+
+//filter Koders by query ¿Copiar el fintro de arriba y mod a query?
+
+
 // Listeners
 document.getElementById('tbodyKoders').addEventListener('click', function(e) {
     deleteKoder(e)
 
     printKoders()
 })
-
-
-
-
 
 
 

@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-6">
+        <div class="col-md-6" id="prueba">
             <form action="" class="bg-dark text-white border rounded p-3" id="koder-form">
                 <div class="form-group">
                     <label for="item-name">Nombre</label>
@@ -84,8 +84,8 @@
             <div class="row" id="search-by-query">
                 <div class="col-md-12">
                     <form class="form-inline col-12">
-                            <input type="text" class="form-control mb-2 mr-2 col-10" id="inlineFormInputName2" placeholder="Introduce Nombre">
-                            <button type="button" class="btn btn-primary mb-2 col">Buscar</button>
+                            <input type="text" class="form-control mb-2 mr-2 col-10" id="name-query" placeholder="Introduce Nombre">
+                            <button type="button" class="btn btn-primary mb-2 col" id="query-input">Buscar</button>
                     </form>
                 </div>
                 <div class="col-md-12 mt-4 resultados">
@@ -108,7 +108,8 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="item-category">Elije una Generación</label>
-                        <select class="form-control" id="item-category">
+                        <select class="form-control" id="item-category-select">
+                            <option>Elige una Opción</option>
                             <option>1ra. Generación</option>
                             <option>2da. Generación</option>
                             <option>3ra. Generación</option>
@@ -120,7 +121,7 @@
                             <option>9na. Generación</option>
                         </select>
                     </div>
-                    <div class="col-md-12 mt-4 resultados">
+                    <div class="col-md-12 mt-4 resultados" id="results-search-by-generation">
                         <h4 class="text-black-50">Resultados</h4>
                         <table class="table">
                             <thead>
@@ -131,7 +132,7 @@
                                     <th scope="col">Generación</th>
                                 </tr>
                             </thead>
-                            <tbody id="tbodyKodersQuery">
+                            <tbody id="tbodyKodersGeneration">
                             </tbody>
                         </table>
                     </div>
