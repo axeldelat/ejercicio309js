@@ -18,12 +18,6 @@ function Koder(number,name,lastName,generation) {
             kodersArray.push(this)
         }
         this.addKoder()
-
-        // this.deleteKoder = function(element) {
-        //     if (element.name === 'delete') {
-        //         element.parentElement.parentElement.remove()
-        //     }
-        // }
 }
 
 document.getElementById("save-button").addEventListener("click", () =>{
@@ -32,11 +26,18 @@ document.getElementById("save-button").addEventListener("click", () =>{
     const lastName = document.getElementById('item-lastName').value
     const generation = document.getElementById('item-category').value
 
-    const koder =new Koder( number, name, lastName, generation)
+    if (name === null || name === '' || lastName === null || lastName === '') {
+        alert('Ingrese todos los datos')
+    } else {
+        const koder =new Koder( number, name, lastName, generation)
+        printKoders()
+        resetForm()    
+    }
 
-    printKoders()
+    // const koder =new Koder( number, name, lastName, generation)
 
-    resetForm()
+    // printKoders()
+    // resetForm()
 })
 
 // Funciones
@@ -84,6 +85,10 @@ function resetForm() {
     document.getElementById('koder-form').reset()
 }
 
+function resetFormSearch() {
+    document.getElementById('form-search').reset()
+}
+
 function deleteKoder(element) {
     let currentElement = parseInt(element.id)-1
     kodersArray.splice(currentElement,1)
@@ -91,7 +96,7 @@ function deleteKoder(element) {
 
     kodersArray.forEach (koder => {
         koder.number = parseInt(kodersArray.indexOf(koder))+1
-    })
+    })    
 }
 
 function ToggleContent() {
@@ -161,8 +166,7 @@ document.getElementById('button-input').addEventListener( 'click' , () => {
     let divResults2 = document.getElementById('results-search-by-name')
     divResults2.style.display = "block"
     document.getElementById('tbodyKodersName').innerHTML=""
-
-
+    
     filteredKodersArray2.forEach(koder => {
         let { number, name, lastName, generation } = koder
 
@@ -187,9 +191,9 @@ document.getElementById('button-input').addEventListener( 'click' , () => {
         generationTd.appendChild(generationText)
         listTr.appendChild(generationTd)
 
-        document.getElementById('tbodyKodersName').appendChild(listTr)
-    });
-
+        document.getElementById('tbodyKodersName').appendChild(listTr)        
+    });        
+    resetFormSearch()
     return console.log(filteredKodersArray2)
 })
 
@@ -200,3 +204,4 @@ document.getElementById('tbodyKoders').addEventListener('click', function(e) {
 
     printKoders()
 })
+
