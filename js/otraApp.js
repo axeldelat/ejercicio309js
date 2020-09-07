@@ -1,4 +1,3 @@
-
 //¿Como actualizar el número de id después de eliminar?
 //Que no permita agregar koder si no están completamente llenos los campos
 //Mostrar mensaje de no hay resultados cuando no hay resultados
@@ -20,11 +19,11 @@ function Koder(number,name,lastName,generation) {
         }
         this.addKoder()
 
-        this.deleteKoder = function(element) {
-            if (element.name === 'delete') {
-                element.parentElement.parentElement.remove()
-            }
-        }
+        // this.deleteKoder = function(element) {
+        //     if (element.name === 'delete') {
+        //         element.parentElement.parentElement.remove()
+        //     }
+        // }
 }
 
 document.getElementById("save-button").addEventListener("click", () =>{
@@ -81,14 +80,18 @@ function printKoders() {
 }
 
 
-
 function resetForm() {
     document.getElementById('koder-form').reset()
 }
 
 function deleteKoder(element) {
-    let currentArray = parseInt(element.id)-1
-    kodersArray.splice(currentArray,1)
+    let currentElement = parseInt(element.id)-1
+    kodersArray.splice(currentElement,1)
+    console.log(currentElement)
+
+    kodersArray.forEach (koder => {
+        koder.number = parseInt(kodersArray.indexOf(koder))+1
+    })
 }
 
 function ToggleContent() {
@@ -192,47 +195,8 @@ document.getElementById('button-input').addEventListener( 'click' , () => {
 
 // Listeners
 document.getElementById('tbodyKoders').addEventListener('click', function(e) {
-    deleteKoder(e)
+    console.log(e.target)
+    deleteKoder(e.target)
 
     printKoders()
 })
-
-
-
-// let haro = new Koder(1,"José","Haro", "9na. Generación")
-
-
-
-// function Workers(name, monday, tuesday, wednesday, thursday, friday){
-//     this.name = name
-//     this.pieces = [ monday, tuesday, wednesday, thursday, friday ]
-//     this.getAverage = function(){
-//         let average = this.pieces.reduce(( acumulador, day) =>{
-//         day.replace("pz","")
-//         return acumulador + parseInt(day.split(": ")[1])
-//         },0) / this.pieces.length
-//         console.log(`soy ${this.name} y mi promedio de piezas es ${average}`)
-//     }
-// }
-
-
-// let workersCollection = productionArray.map( worker =>{
-//     let [ name, monday, tuesday, wednesday, thursday, friday ] = worker
-//     return new Workers( name, monday, tuesday, wednesday, thursday, friday )
-// })
-
-// console.log(workersCollection)
-// workersCollection.forEach( worker =>{
-//     worker.getAverage()
-// })
-	
-
-
-// function Animal( specie, color, size){
-//     this.specie = specie
-//     this.color = color
-//     this.size = size
-//     this.presentation = function(){
-//         console.log("Soy un " + this.specie + " de color " + this.color + " y de tamaño " + this.size )
-//     }
-// }
