@@ -6,6 +6,9 @@
 let kodersArray = [
 
 ]
+function imprimir () {
+    console.log(this.responseText);
+}
 
 //Objeto
 function Koder(number,name,lastName,generation) {
@@ -13,12 +16,7 @@ function Koder(number,name,lastName,generation) {
         this.name = name
         this.lastName = lastName
         this.generation = generation
-
-        this.addKoder = function(){
-            kodersArray.push(this)
-        }
-        this.addKoder()
-}
+    }       
 
 document.getElementById("save-button").addEventListener("click", () =>{
     const number = kodersArray.length+1
@@ -30,6 +28,16 @@ document.getElementById("save-button").addEventListener("click", () =>{
         alert('Ingrese todos los datos')
     } else {
         const koder =new Koder( number, name, lastName, generation)
+        console.log(koder)
+
+        /*Haciendo POST del Koder creado a Firebase*/ 
+        var http = new XMLHttpRequest();
+            http.addEventListener("click", imprimir);
+            http.open("POST", "https://ajaxclass9g.firebaseio.com/axharlu/.json");
+            koder1 = JSON.stringify(koder);
+            http.send(koder1);
+
+
         printKoders()
         resetForm()    
     }
@@ -204,4 +212,3 @@ document.getElementById('tbodyKoders').addEventListener('click', function(e) {
 
     printKoders()
 })
-
